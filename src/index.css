@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #000d1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2563eb;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8;
+}
+
+/* Efeitos de Energia da Bateria */
+@keyframes electric-pulse-blue {
+  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+@keyframes electric-glow-blue {
+  0%, 100% { box-shadow: 0 0 5px #2563eb, 0 0 10px #2563eb; filter: brightness(1); }
+  50% { box-shadow: 0 0 20px #2563eb, 0 0 30px #60a5fa; filter: brightness(1.1); }
+}
+
+.hover-electric-blue:hover {
+  animation: electric-glow-blue 1.5s infinite;
+  transform: translateY(-2px);
+}
+
+@keyframes electric-pulse-red {
+  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+@keyframes electric-glow-red {
+  0%, 100% { box-shadow: 0 0 5px #dc2626, 0 0 10px #dc2626; filter: brightness(1); }
+  50% { box-shadow: 0 0 20px #dc2626, 0 0 30px #f87171; filter: brightness(1.1); }
+}
+
+.hover-electric-red:hover {
+  animation: electric-glow-red 1.5s infinite;
+  transform: translateY(-2px);
+}
