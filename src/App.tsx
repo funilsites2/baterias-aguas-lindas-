@@ -344,47 +344,49 @@ export default function App() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-32 md:pt-40 pb-32 md:pb-48 px-4 sm:px-6">
-        <div className="w-full md:max-w-7xl mx-auto relative z-40">
-          <div className="relative rounded-[32px] md:rounded-[40px] overflow-hidden bg-slate-900 shadow-2xl min-h-[500px] md:min-h-[600px] flex items-center">
+      <section className="relative pt-24 md:pt-28 pb-32 md:pb-48">
+        <div className="w-full relative z-40">
+          <div className="relative overflow-hidden bg-slate-900 shadow-2xl min-h-[500px] md:min-h-[600px] flex items-center">
             {/* Background Image */}
             <motion.div style={{ y, scale }} className="absolute inset-0 w-full h-full">
               <img 
-                src="https://i.imgur.com/WMpandK.jpeg" 
-                alt="Mecânico instalando bateria" 
-                className="w-full h-full object-cover object-[80%_center] md:object-right opacity-80 md:opacity-100"
+                src="https://www.batteriesinternational.com/wp-content/uploads/2018/06/Neymar.jpg" 
+                alt="Neymar Baterias Heliar" 
+                className="w-full h-full object-cover object-[70%_20%] md:object-center opacity-70 md:opacity-100"
               />
             </motion.div>
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/70 to-transparent md:via-slate-900/50"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 md:from-slate-900 via-slate-900/60 to-transparent"></div>
 
             {/* Content Overlay */}
-            <div className="relative z-50 p-8 pt-32 pb-48 md:px-16 md:pb-16 md:pt-64 max-w-3xl">
-              <div className="flex items-center gap-2 text-red-600 font-bold text-xs tracking-[0.4em] mb-6 uppercase animate-in fade-in slide-in-from-left duration-700">
-                <span className="w-8 h-[2px] bg-red-600"></span>Loja de Baterias Especializada
-              </div>
-              <h1 className="text-3xl md:text-6xl font-black tracking-tighter leading-[0.9] mb-8 italic uppercase text-white relative animate-in fade-in slide-in-from-left duration-700 delay-100">
-                BATERIAS ÁGUAS LINDAS GO
-                <br />
-                <span className="text-red-600 inline-flex items-center gap-2">
-                  TROCA NA HORA!{' '}
-                  <Zap className="w-8 h-8 md:w-12 md:h-12 fill-yellow-400 text-yellow-400 animate-pulse hidden md:block" />
-                </span>
-              </h1>
-              <p className="text-gray-200 text-lg max-w-md mb-10 leading-relaxed animate-in fade-in slide-in-from-left duration-700 delay-200">
-                Entrega e instalação gratuita de baterias Heliar em
-                até 40 minutos em Águas Lindas e região.
-              </p>
-              <div className="flex flex-wrap gap-6 items-center animate-in fade-in slide-in-from-left duration-700 delay-300 relative z-30">
-                <a
-                  id="btn-hero-whatsapp"
-                  href={defaultWhatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-red-600 text-white px-10 py-5 rounded-lg font-black italic tracking-widest hover:bg-white hover:text-red-600 transition-all flex items-center gap-3 group shadow-lg shadow-red-600/20 hover-electric-red relative z-50"
-                >
-                  WHATSAPP RÁPIDO{' '}
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
+            <div className="w-full max-w-7xl mx-auto relative z-50 p-8 pt-32 pb-48 md:px-16 md:pb-16 md:pt-64">
+              <div className="max-w-3xl">
+                <div className="flex items-center gap-2 text-red-600 font-bold text-xs tracking-[0.4em] mb-6 uppercase animate-in fade-in slide-in-from-left duration-700">
+                  <span className="w-8 h-[2px] bg-red-600"></span>Loja de Baterias Especializada
+                </div>
+                <h1 className="text-3xl md:text-6xl font-black tracking-tighter leading-[0.9] mb-8 italic uppercase text-white relative animate-in fade-in slide-in-from-left duration-700 delay-100">
+                  BATERIAS ÁGUAS LINDAS GO
+                  <br />
+                  <span className="text-red-600 inline-flex items-center gap-2">
+                    TROCA NA HORA!{' '}
+                    <Zap className="w-8 h-8 md:w-12 md:h-12 fill-yellow-400 text-yellow-400 animate-pulse hidden md:block" />
+                  </span>
+                </h1>
+                <p className="text-gray-200 text-lg max-w-md mb-10 leading-relaxed animate-in fade-in slide-in-from-left duration-700 delay-200">
+                  Entrega e instalação gratuita de baterias Heliar em
+                  até 40 minutos em Águas Lindas e região.
+                </p>
+                <div className="flex flex-wrap gap-6 items-center animate-in fade-in slide-in-from-left duration-700 delay-300 relative z-30">
+                  <a
+                    id="btn-hero-whatsapp"
+                    href={defaultWhatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-red-600 text-white px-10 py-5 rounded-lg font-black italic tracking-widest hover:bg-white hover:text-red-600 transition-all flex items-center gap-3 group shadow-lg shadow-red-600/20 hover-electric-red relative z-50"
+                  >
+                    WHATSAPP RÁPIDO{' '}
+                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -780,7 +782,7 @@ export default function App() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0 opacity-5 pointer-events-none">
           <img 
-            src="https://www.heliarexpress.com.br/content/dist/img/descricao-baterias.png" 
+            src="https://portaldaautopeca.com.br/wp-content/uploads/2025/04/baterias-Heliar-nova-etiqueta-1024x576.jpg" 
             alt="Background" 
             className="w-full h-full object-cover object-bottom"
           />
