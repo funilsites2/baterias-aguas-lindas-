@@ -350,8 +350,8 @@ export default function App() {
             {/* Background Image */}
             <motion.div style={{ y, scale }} className="absolute inset-0 w-full h-full">
               <img 
-                src="https://www.batteriesinternational.com/wp-content/uploads/2018/06/Neymar.jpg" 
-                alt="Neymar Baterias Heliar" 
+                src="https://i.imgur.com/EzkTQ9C.jpeg" 
+                alt="Baterias Heliar" 
                 className="w-full h-full object-cover object-[70%_20%] md:object-center opacity-70 md:opacity-100"
               />
             </motion.div>
