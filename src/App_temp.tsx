@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import {
   MessageSquare,
   Phone,
+  Sun,
   Menu,
   X,
   Zap,
@@ -132,6 +133,7 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
 };
 
 export default function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [selectedCity, setSelectedCity] = useState('');
@@ -195,9 +197,31 @@ export default function App() {
   const scale = useTransform(scrollY, [0, 500], [1, 1.1]);
 
   useEffect(() => {
-    // Force light mode
-    document.documentElement.classList.remove('dark');
+    // Check system preference or saved preference
+    if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      setIsDarkMode(true);
+      document.documentElement.classList.add('dark');
+    } else {
+      setIsDarkMode(false);
+      document.documentElement.classList.remove('dark');
+    }
   }, []);
+
+  const toggleTheme = () => {
+    if (isDarkMode) {
+      document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light';
+      setIsDarkMode(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.theme = 'dark';
+      setIsDarkMode(true);
+    }
+  };
 
   const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
@@ -246,7 +270,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-2 group cursor-pointer">
             <img
-              alt="Baterias Águas Lindas Logo"
+              alt="Potencia das Baterias Logo"
               className="h-20 md:h-24 w-auto object-contain transition-transform group-hover:scale-105"
               src="https://i.imgur.com/iJgW64B.png"
             />
@@ -281,6 +305,13 @@ export default function App() {
             </a>
           </div>
           <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all border border-slate-200 cursor-pointer"
+              aria-label="Alternar tema"
+            >
+              <Sun className="w-4 h-4" />
+            </button>
             <a
               id="btn-header-call"
               href="tel:61998688643"
@@ -290,6 +321,13 @@ export default function App() {
             </a>
           </div>
           <div className="flex items-center gap-4 md:hidden">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-slate-100 text-slate-700 border border-slate-200 cursor-pointer"
+              aria-label="Alternar tema"
+            >
+              <Sun className="w-5 h-5" />
+            </button>
             <button
               onClick={() => setIsMenuOpen(true)}
               className="p-2 text-slate-900 cursor-pointer"
@@ -310,7 +348,7 @@ export default function App() {
         <div className="p-6 flex flex-col h-full">
           <div className="flex justify-between items-center mb-12">
             <img
-              alt="Baterias Águas Lindas Logo"
+              alt="Potencia das Baterias Logo"
               className="h-16 w-auto object-contain"
               src="https://i.imgur.com/iJgW64B.png"
             />
@@ -352,10 +390,10 @@ export default function App() {
               <img 
                 src="https://i.imgur.com/WMpandK.jpeg" 
                 alt="Mecânico instalando bateria" 
-                className="w-full h-full object-cover object-[80%_center] md:object-right opacity-80 md:opacity-100"
+                className="w-full h-full object-cover object-right opacity-50"
               />
             </motion.div>
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/70 to-transparent md:via-slate-900/50"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
 
             {/* Content Overlay */}
             <div className="relative z-50 p-8 pt-32 pb-48 md:px-16 md:pb-16 md:pt-64 max-w-3xl">
@@ -426,7 +464,7 @@ export default function App() {
       </section>
 
       {/* Units Section */}
-      <section id="unidades" className="relative z-30 pt-48 md:pt-40 pb-32 bg-white">
+      <section id="unidades" className="relative z-30 pt-64 pb-32 bg-white">
         <FadeIn className="max-w-7xl mx-auto px-6">
           <div className="mb-20">
             <div className="flex items-center gap-2 text-red-600 font-bold text-xs tracking-[0.4em] mb-4 uppercase">
@@ -439,7 +477,7 @@ export default function App() {
           <div className="group relative bg-slate-50 rounded-[40px] overflow-hidden border border-slate-200 hover:border-red-600/30 transition-all duration-500 shadow-2xl flex flex-col md:flex-row">
             <div className="w-full md:w-1/2 aspect-square relative overflow-hidden">
               <img
-                alt="Loja Baterias Águas Lindas"
+                alt="Loja Potencia das Baterias Águas Lindas"
                 className="w-full h-full object-cover absolute inset-0 transition-transform duration-700 group-hover:scale-110"
                 src="https://i.imgur.com/EpV1wGT.png"
               />
@@ -609,7 +647,7 @@ export default function App() {
               {
                 name: 'Amanda Silva',
                 time: 'há 2 semanas',
-                text: '"Fui muito bem atendida. Meu carro morreu perto do shopping e vieram de Águas Lindas super rápido trocar a bateria. Recomendo muito o pessoal da Baterias Águas Lindas!"',
+                text: '"Fui muito bem atendida. Meu carro morreu perto do shopping e vieram de Águas Lindas super rápido trocar a bateria. Recomendo muito o pessoal da Potência!"',
                 img: 'https://randomuser.me/api/portraits/women/44.jpg',
               },
               {
@@ -790,7 +828,7 @@ export default function App() {
             <div className="col-span-1">
               <div className="flex items-center gap-2 mb-8">
                 <img
-                  alt="Baterias Águas Lindas Logo"
+                  alt="Potencia das Baterias Logo"
                   className="h-24 md:h-32 w-auto object-contain"
                   src="https://i.imgur.com/iJgW64B.png"
                 />
@@ -853,7 +891,7 @@ export default function App() {
             </div>
           </div>
           <div className="pt-12 border-t border-neutral-800 text-center text-[10px] text-neutral-500 font-black tracking-[0.3em] uppercase">
-            <p>© 2024 Baterias Águas Lindas - OTIMIZADO PARA GOOGLE</p>
+            <p>© 2024 POTENCIA DAS BATERIAS - OTIMIZADO PARA GOOGLE</p>
           </div>
         </div>
       </footer>
